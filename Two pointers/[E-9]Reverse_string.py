@@ -17,3 +17,15 @@ Constraints:
 1 <= s.length <= 105
 s[i] is a printable ascii character.
 """
+#Solution
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        #we should just use two pointers, one at each end, make the switch places
+        l, r = 0, len(s) -1
+        while l<r:
+            s[l], s[r] = s[r], s[l]
+            l += 1
+            r -= 1
