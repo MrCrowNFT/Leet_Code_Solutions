@@ -58,3 +58,26 @@ class Solution:
         memory = O(n) =>potentially all nodes get in the hasmap
         """
         
+#Solution with memory 0(1): Floyd's Tortoise and Hare algorith
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        #Another solution: Using the Floyd´s Tortoise & Hare algorithm
+        #This way we use O(1) memory
+        #Using a fast and slow pointer, fast shifts by 2 and slow by 1
+        #fast will get to null faster if there is no cycle
+        #if there is no cycle, the two pointer will eventually meet
+        slow, fast = head, head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+
+        return False
